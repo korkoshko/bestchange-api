@@ -8,7 +8,7 @@ A simple package for working with the pseudo API of the bestchage.ru
 ## Requirements
 
 - PHP 7.4 or above
-- [ZIP extension](http://php.net/manual/en/json.installation.php)
+- [ZIP extension](http://php.net/manual/en/zip.installation.php)
 
 ## Installation
 

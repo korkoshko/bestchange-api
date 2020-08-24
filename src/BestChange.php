@@ -135,7 +135,6 @@ class BestChange
     public function getCurrencies(int $chunk = 0)
     {
         return $this->get(CurrencyMethod::class, $chunk);
-
     }
 
     /**
@@ -146,7 +145,6 @@ class BestChange
     public function getCurrencyCodes(int $chunk = 0)
     {
         return $this->get(CurrencyMethod::class, $chunk);
-
     }
 
     /**
@@ -167,7 +165,6 @@ class BestChange
     public function getRates(int $chunk = 0)
     {
         return $this->get(RateMethod::class, $chunk);
-
     }
 
     /**
