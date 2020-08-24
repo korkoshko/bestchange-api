@@ -1,0 +1,33 @@
+{
+  "name": "korkoshko/bestchange-api",
+  "description": "A simple package for working with the pseudo API of the bestchage.ru",
+  "type": "library",
+  "keywords": [
+    "bestchange",
+    "api",
+    "rates",
+    "exchangers",
+    "currency"
+  ],
+  "require": {
+    "guzzlehttp/guzzle": "^7.1@dev",
+    "ext-zip": "^1.15",
+    "php": "7.4.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Korkoshko\\BestChange\\": "src/"
+    }
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "korkoshko",
+      "email": "victor.korkoshko@gmail.com"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/korkoshko/bestchange-api/issues"
+  },
+  "minimum-stability": "dev"
+}
