@@ -16,7 +16,7 @@ A simple package for working with the pseudo API of the bestchage.ru
 composer require korkoshko/bestchange-api
 ```
 
-## Examples
+## Usage
 
 ### Initial
 ```php 
@@ -28,7 +28,7 @@ $bestChange->download(); // Downloading archive with data
 
 ### Get base info of API
 ```php
-foreach($bestChange->get(InfoMethod::class) as $info) { // The generator returns (https://www.php.net/manual/ru/language.generators.php)
+foreach($bestChange->getInfo() as $info) { // The generator returns (https://www.php.net/manual/ru/language.generators.php)
     var_dump($info);
 }
 
@@ -42,7 +42,7 @@ var_dump(
 ### Get exchangers
 
 ```php
-foreach ($bestChange->get(ExchangerMethod::class) as $exchanger) {
+foreach ($bestChange->getExchangers() as $exchanger) {
     var_dump($exchanger);
 }
 ```

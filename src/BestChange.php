@@ -9,6 +9,11 @@ use Korkoshko\BestChange\Contracts\{
     Method,
     ReaderFromZip
 };
+use Korkoshko\BestChange\Methods\{
+    CurrencyMethod,
+    InfoMethod,
+    RateMethod
+};
 
 class BestChange
 {
@@ -112,6 +117,57 @@ class BestChange
         }
 
         return $generator;
+    }
+
+    /**
+     * @return Generator
+     */
+    public function getInfo(): Generator
+    {
+        return $this->get(InfoMethod::class);
+    }
+
+    /**
+     * @param int $chunk
+     *
+     * @return Generator
+     */
+    public function getCurrencies(int $chunk = 0)
+    {
+        return $this->get(CurrencyMethod::class, $chunk);
+
+    }
+
+    /**
+     * @param int $chunk
+     *
+     * @return Generator
+     */
+    public function getCurrencyCodes(int $chunk = 0)
+    {
+        return $this->get(CurrencyMethod::class, $chunk);
+
+    }
+
+    /**
+     * @param int $chunk
+     *
+     * @return Generator
+     */
+    public function getExchangers(int $chunk = 0)
+    {
+        return $this->get(RateMethod::class, $chunk);
+    }
+
+    /**
+     * @param int $chunk
+     *
+     * @return Generator
+     */
+    public function getRates(int $chunk = 0)
+    {
+        return $this->get(RateMethod::class, $chunk);
+
     }
 
     /**

@@ -1,7 +1,6 @@
 <?php
 
 use Korkoshko\BestChange\BestChange;
-use Korkoshko\BestChange\Methods\CurrencyMethod;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -12,6 +11,6 @@ if (! file_exists($bestChange->getArchivePath())) {
     $bestChange->download();
 }
 
-foreach ($bestChange->get(CurrencyMethod::class) as $currency) {
+foreach ($bestChange->getCurrencies() as $currency) {
     var_dump($currency);
 }

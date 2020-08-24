@@ -1,7 +1,6 @@
 <?php
 
 use Korkoshko\BestChange\BestChange;
-use Korkoshko\BestChange\Methods\ExchangerMethod;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -12,6 +11,6 @@ if (! file_exists($bestChange->getArchivePath())) {
     $bestChange->download();
 }
 
-foreach ($bestChange->get(ExchangerMethod::class) as $exchanger) {
+foreach ($bestChange->getExchangers() as $exchanger) {
     var_dump($exchanger);
 }

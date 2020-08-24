@@ -12,6 +12,6 @@ if (! file_exists($bestChange->getArchivePath())) {
     $bestChange->download();
 }
 
-foreach ($bestChange->get(CurrencyCodeMethod::class) as $currency) {
+foreach ($bestChange->getCurrencyCodes() as $currency) {
     var_dump($currency);
 }

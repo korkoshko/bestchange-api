@@ -1,7 +1,6 @@
 <?php
 
 use Korkoshko\BestChange\BestChange;
-use Korkoshko\BestChange\Methods\RateMethod;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -12,7 +11,7 @@ if (! file_exists($bestChange->getArchivePath())) {
     $bestChange->download();
 }
 
-$iterator = $bestChange->get(RateMethod::class);
+$iterator = $bestChange->getRates();
 
 $fromId = 93; // BTC
 $toId = 139;  // ETH
