@@ -2,9 +2,7 @@
 
 namespace Korkoshko\BestChange\Transformers;
 
-use Korkoshko\BestChange\Contracts\Transformer;
-
-class Rate extends Transformer
+class RateTransformer extends AbstractTransformer
 {
     protected const FROM = 0;
     protected const TO = 1;

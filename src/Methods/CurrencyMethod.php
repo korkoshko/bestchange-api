@@ -2,13 +2,13 @@
 
 namespace Korkoshko\BestChange\Methods;
 
-use Korkoshko\BestChange\Contracts\{
-    Method,
-    Transformer
+use Korkoshko\BestChange\{
+    Interfaces\MethodInterface,
+    Transformers\AbstractTransformer,
+    Transformers\CurrencyTransformer
 };
-use Korkoshko\BestChange\Transformers\Currency;
 
-class CurrencyMethod implements Method
+class CurrencyMethod implements MethodInterface
 {
     /**
      * @return string
@@ -19,10 +19,10 @@ class CurrencyMethod implements Method
     }
 
     /**
-     * @return Transformer
+     * @return AbstractTransformer
      */
-    public function getTransformer(): Transformer
+    public function getTransformer(): AbstractTransformer
     {
-        return new Currency();
+        return new CurrencyTransformer();
     }
 }

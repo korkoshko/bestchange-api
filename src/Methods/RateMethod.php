@@ -2,13 +2,13 @@
 
 namespace Korkoshko\BestChange\Methods;
 
-use Korkoshko\BestChange\Contracts\{
-    Method,
-    Transformer
+use Korkoshko\BestChange\{
+    Interfaces\MethodInterface,
+    Transformers\AbstractTransformer,
+    Transformers\RateTransformer
 };
-use Korkoshko\BestChange\Transformers\Rate;
 
-class RateMethod implements Method
+class RateMethod implements MethodInterface
 {
     /**
      * @return string
@@ -19,10 +19,10 @@ class RateMethod implements Method
     }
 
     /**
-     * @return Transformer
+     * @return AbstractTransformer
      */
-    public function getTransformer(): Transformer
+    public function getTransformer(): AbstractTransformer
     {
-        return new Rate();
+        return new RateTransformer();
     }
 }

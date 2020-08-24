@@ -4,12 +4,12 @@ namespace Korkoshko\BestChange;
 
 use Generator;
 use ZipArchive;
-use Korkoshko\BestChange\Contracts\{
-    Transformer,
-    ReaderFromZip
+use Korkoshko\BestChange\{
+    Interfaces\ZipReaderInterface,
+    Transformers\AbstractTransformer
 };
 
-class ReaderFromZipService implements ReaderFromZip
+class ZipReaderService implements ZipReaderInterface
 {
     /**
      * @var ZipArchive
@@ -29,12 +29,13 @@ class ReaderFromZipService implements ReaderFromZip
     /**
      * ParseFromZipService constructor.
      *
-     * @param string|null $path
+     * @param string|null     $path
+     * @param ZipArchive|null $archive
      */
-    public function __construct(?string $path = null)
+    public function __construct(?string $path = null, ?ZipArchive $archive = null)
     {
         $this->path = $path;
-        $this->archive = new ZipArchive();
+        $this->archive = $archive ?? new ZipArchive();
     }
 
     public function setPath(string $path): self
@@ -66,12 +67,12 @@ class ReaderFromZipService implements ReaderFromZip
     }
 
     /**
-     * @param string           $filename
-     * @param Transformer|null $transformer
+     * @param string                   $filename
+     * @param AbstractTransformer|null $transformer
      *
      * @return Generator
      */
-    public function read(string $filename, ?Transformer $transformer)
+    public function read(string $filename, ?AbstractTransformer $transformer)
     {
         if (! $this->isOpen) {
             $this->open();

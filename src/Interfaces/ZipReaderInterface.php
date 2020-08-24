@@ -1,13 +1,10 @@
 <?php
 
-namespace Korkoshko\BestChange\Contracts;
+namespace Korkoshko\BestChange\Interfaces;
 
-/**
- * Interface ReaderFromZip
- *
- * @package Korkoshko\BestChange\Contracts
- */
-interface ReaderFromZip
+use Korkoshko\BestChange\Transformers\AbstractTransformer;
+
+interface ZipReaderInterface
 {
     /**
      * @param string $path
@@ -32,10 +29,10 @@ interface ReaderFromZip
     public function close(): self;
 
     /**
-     * @param string           $filename
-     * @param Transformer|null $transformer
+     * @param string                   $filename
+     * @param AbstractTransformer|null $transformer
      *
      * @return array
      */
-    public function read(string $filename, ?Transformer $transformer);
+    public function read(string $filename, ?AbstractTransformer $transformer);
 }

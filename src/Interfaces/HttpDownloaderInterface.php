@@ -1,15 +1,10 @@
 <?php
 
-namespace Korkoshko\BestChange\Contracts;
+namespace Korkoshko\BestChange\Interfaces;
 
 use Psr\Http\Message\ResponseInterface;
 
-/**
- * Interface HttpDownloader
- *
- * @package App\Admin\BestChange\Services\Contracts
- */
-interface HttpDownloader
+interface HttpDownloaderInterface
 {
     /**
      * @param string $path

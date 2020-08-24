@@ -2,9 +2,7 @@
 
 namespace Korkoshko\BestChange\Transformers;
 
-use Korkoshko\BestChange\Contracts\Transformer;
-
-class Exchanger extends Transformer
+class ExchangerTransformer extends AbstractTransformer
 {
     protected const ID = 0;
     protected const NAME = 1;

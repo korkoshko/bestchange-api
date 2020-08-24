@@ -2,18 +2,22 @@
 
 namespace Korkoshko\BestChange;
 
+use Korkoshko\BestChange\{
+    Interfaces\MethodInterface,
+    Interfaces\ZipReaderInterface,
+    Interfaces\HttpDownloaderInterface,
+    Methods\CurrencyMethod,
+    Methods\CurrencyCodeMethod,
+    Methods\InfoMethod,
+    Methods\RateMethod
+};
+use GuzzleHttp\Exception\{
+    GuzzleException,
+    InvalidArgumentException
+};
+
 use Generator;
-use GuzzleHttp\Exception\InvalidArgumentException;
-use Korkoshko\BestChange\Contracts\{
-    HttpDownloader,
-    Method,
-    ReaderFromZip
-};
-use Korkoshko\BestChange\Methods\{
-    CurrencyMethod,
-    InfoMethod,
-    RateMethod
-};
+use Psr\Http\Message\ResponseInterface;
 
 class BestChange
 {
@@ -28,25 +32,25 @@ class BestChange
     protected ?string $archivePath = null;
 
     /**
-     * @var ReaderFromZip
+     * @var ZipReaderInterface
      */
-    protected ReaderFromZip $reader;
+    protected ZipReaderInterface $reader;
 
     /**
-     * @var HttpDownloader
+     * @var HttpDownloaderInterface
      */
-    protected HttpDownloader $downloader;
+    protected HttpDownloaderInterface $downloader;
 
     /**
-     * @param ReaderFromZip|null  $reader
-     * @param HttpDownloader|null $downloader
+     * @param ZipReaderInterface|null      $reader
+     * @param HttpDownloaderInterface|null $downloader
      */
     public function __construct(
-        ?ReaderFromZip $reader = null,
-        ?HttpDownloader $downloader = null
+        ZipReaderInterface $reader = null,
+        HttpDownloaderInterface $downloader = null
     )
     {
-        $this->reader = $reader ?? new ReaderFromZipService();
+        $this->reader = $reader ?? new ZipReaderService();
         $this->downloader = $downloader ?? new HttpDownloaderService();
     }
 
@@ -91,9 +95,10 @@ class BestChange
     }
 
     /**
-     * @return \Psr\Http\Message\ResponseInterface
+     * @return ResponseInterface
+     * @throws GuzzleException
      */
-    public function download()
+    public function download(): ResponseInterface
     {
         return $this->downloader->download($this->getArchivePath());
     }
@@ -144,7 +149,7 @@ class BestChange
      */
     public function getCurrencyCodes(int $chunk = 0)
     {
-        return $this->get(CurrencyMethod::class, $chunk);
+        return $this->get(CurrencyCodeMethod::class, $chunk);
     }
 
     /**
@@ -187,12 +192,12 @@ class BestChange
     /**
      * @param string $class
      *
-     * @return Method
+     * @return MethodInterface
      * @throws InvalidArgumentException
      */
     protected function newMethodInstance(string $class)
     {
-        if (($method = new $class) instanceof Method) {
+        if (($method = new $class) instanceof MethodInterface) {
             return $method;
         }
 

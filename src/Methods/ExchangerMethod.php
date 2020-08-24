@@ -2,13 +2,13 @@
 
 namespace Korkoshko\BestChange\Methods;
 
-use Korkoshko\BestChange\Contracts\{
-    Method,
-    Transformer
+use Korkoshko\BestChange\{
+    Interfaces\MethodInterface,
+    Transformers\AbstractTransformer,
+    Transformers\ExchangerTransformer
 };
-use Korkoshko\BestChange\Transformers\Exchanger;
 
-class ExchangerMethod implements Method
+class ExchangerMethod implements MethodInterface
 {
     /**
      * @return string
@@ -19,10 +19,10 @@ class ExchangerMethod implements Method
     }
 
     /**
-     * @return Transformer
+     * @return AbstractTransformer
      */
-    public function getTransformer(): Transformer
+    public function getTransformer(): AbstractTransformer
     {
-        return new Exchanger();
+        return new ExchangerTransformer();
     }
 }

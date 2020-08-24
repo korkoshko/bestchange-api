@@ -2,9 +2,7 @@
 
 namespace Korkoshko\BestChange\Transformers;
 
-use Korkoshko\BestChange\Contracts\Transformer;
-
-class Info extends Transformer
+class InfoTransformer extends AbstractTransformer
 {
     protected const KEY = 0;
     protected const VALUE = 1;
@@ -16,7 +14,9 @@ class Info extends Transformer
      */
     public function transform(string $data): array
     {
-        $data = explode('=', $data);
+        $this->setDelimiter('=');
+
+        $data = parent::transform($data);
 
         return [
             $data[self::KEY] => $data[self::VALUE],

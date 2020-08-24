@@ -2,9 +2,7 @@
 
 namespace Korkoshko\BestChange\Transformers;
 
-use Korkoshko\BestChange\Contracts\Transformer;
-
-class CurrencyCode extends Transformer
+class CurrencyCodeTransformer extends AbstractTransformer
 {
     protected const ID = 0;
     protected const NAME = 1;

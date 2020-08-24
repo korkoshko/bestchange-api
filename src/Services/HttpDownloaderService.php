@@ -3,24 +3,18 @@
 namespace Korkoshko\BestChange;
 
 use Psr\Http\Message\ResponseInterface;
-
 use GuzzleHttp\{
     ClientInterface,
     Client as GuzzleClient,
     Exception\GuzzleException
 };
 
-/**
- * Class HttpDownloaderService
- *
- * @package App\Admin\BestChange\Services
- */
-class HttpDownloaderService implements Contracts\HttpDownloader
+class HttpDownloaderService implements Interfaces\HttpDownloaderInterface
 {
     /**
      * @var string
      */
-    protected string $link;
+    protected string $link = 'http://api.bestchange.ru/info.zip';
 
     /**
      * @var ClientInterface
@@ -30,12 +24,30 @@ class HttpDownloaderService implements Contracts\HttpDownloader
     /**
      * HttpDownloader constructor.
      *
-     * @param string $link
+     * @param ClientInterface|null $client
      */
-    public function __construct(string $link = 'http://api.bestchange.ru/info.zip')
+    public function __construct(?ClientInterface $client = null)
     {
-        $this->client = new GuzzleClient();
-        $this->link = $link;
+        $this->client = $client ?? new GuzzleClient();
+    }
+
+    /**
+     * @param string $link
+     *
+     * @return $this
+     */
+    public function setLink(string $link)
+    {
+        $this->link = $this;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLink(): string
+    {
+        return $this->link;
     }
 
     /**

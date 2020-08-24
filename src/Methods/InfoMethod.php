@@ -2,13 +2,13 @@
 
 namespace Korkoshko\BestChange\Methods;
 
-use Korkoshko\BestChange\Transformers\Info;
-use Korkoshko\BestChange\Contracts\{
-    Method,
-    Transformer
+use Korkoshko\BestChange\{
+    Interfaces\MethodInterface,
+    Transformers\AbstractTransformer,
+    Transformers\InfoTransformer
 };
 
-class InfoMethod implements Method
+class InfoMethod implements MethodInterface
 {
     /**
      * @return string
@@ -19,10 +19,10 @@ class InfoMethod implements Method
     }
 
     /**
-     * @return Transformer
+     * @return AbstractTransformer
      */
-    public function getTransformer(): Transformer
+    public function getTransformer(): AbstractTransformer
     {
-        return new Info();
+        return new InfoTransformer();
     }
 }
