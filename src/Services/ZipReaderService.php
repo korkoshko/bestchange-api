@@ -1,6 +1,6 @@
 <?php
 
-namespace Korkoshko\BestChange;
+namespace Korkoshko\BestChange\Services;
 
 use Generator;
 use ZipArchive;

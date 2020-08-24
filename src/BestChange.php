@@ -2,10 +2,13 @@
 
 namespace Korkoshko\BestChange;
 
+use Generator;
 use Korkoshko\BestChange\{
     Interfaces\MethodInterface,
     Interfaces\ZipReaderInterface,
     Interfaces\HttpDownloaderInterface,
+    Services\ZipReaderService,
+    Services\HttpDownloaderService,
     Methods\CurrencyMethod,
     Methods\CurrencyCodeMethod,
     Methods\InfoMethod,
@@ -15,8 +18,6 @@ use GuzzleHttp\Exception\{
     GuzzleException,
     InvalidArgumentException
 };
-
-use Generator;
 use Psr\Http\Message\ResponseInterface;
 
 class BestChange

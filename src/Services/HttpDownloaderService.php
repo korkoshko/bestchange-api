@@ -1,7 +1,8 @@
 <?php
 
-namespace Korkoshko\BestChange;
+namespace Korkoshko\BestChange\Services;
 
+use Korkoshko\BestChange\Interfaces\HttpDownloaderInterface;
 use Psr\Http\Message\ResponseInterface;
 use GuzzleHttp\{
     ClientInterface,
@@ -9,7 +10,7 @@ use GuzzleHttp\{
     Exception\GuzzleException
 };
 
-class HttpDownloaderService implements Interfaces\HttpDownloaderInterface
+class HttpDownloaderService implements HttpDownloaderInterface
 {
     /**
      * @var string
