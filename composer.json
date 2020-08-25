@@ -10,9 +10,9 @@
     "currency"
   ],
   "require": {
-    "guzzlehttp/guzzle": "^7.1",
     "ext-zip": "^1.15",
-    "php": "7.4.*"
+    "php": "7.4.*",
+    "guzzlehttp/guzzle": "^7.0"
   },
   "autoload": {
     "psr-4": {
