@@ -29,5 +29,6 @@
   "support": {
     "issues": "https://github.com/korkoshko/bestchange-api/issues"
   },
-  "minimum-stability": "dev"
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }
