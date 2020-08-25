@@ -10,7 +10,7 @@
     "currency"
   ],
   "require": {
-    "guzzlehttp/guzzle": "^7.1@dev",
+    "guzzlehttp/guzzle": "^7.1",
     "ext-zip": "^1.15",
     "php": "7.4.*"
   },
