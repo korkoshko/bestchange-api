@@ -12,7 +12,8 @@ use Korkoshko\BestChange\{
     Methods\CurrencyMethod,
     Methods\CurrencyCodeMethod,
     Methods\InfoMethod,
-    Methods\RateMethod
+    Methods\RateMethod,
+    Methods\ExchangerMethod
 };
 use GuzzleHttp\Exception\{
     GuzzleException,
@@ -160,7 +161,7 @@ class BestChange
      */
     public function getExchangers(int $chunk = 0)
     {
-        return $this->get(RateMethod::class, $chunk);
+        return $this->get(ExchangerMethod::class, $chunk);
     }
 
     /**
